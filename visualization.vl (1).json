@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/LordChinDs/Vega_BMA/main/BMA_DIS_004.json",
+    "format": {"type": "topojson", "feature": "BMA_DIS_004"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.DISTRICT_N",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/LordChinDs/Vega_BMA/main/BMA_ADMIN_SUB_DISTRICT.csv"
+        },
+        "key": "DISTRICT_N",
+        "fields": ["Shape_Area"]
+      }
+    }
+  ],
+  "mark": "geoshape",
+  "encoding": {"color": {"field": "Shape_Area", "type": "quantitative"}},
+  "config": {}
+}
